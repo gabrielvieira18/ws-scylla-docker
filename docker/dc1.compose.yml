@@ -1,6 +1,6 @@
 services:
   scylla-dc1-n1: &scylla-main
-    image: scylladb/scylla:6.1
+    image: scylladb/scylla:6.2
     container_name: scylla-dc1-n1
     command:
       - --smp=2
