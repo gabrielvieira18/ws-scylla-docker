@@ -11,6 +11,9 @@ services:
       - --endpoint-snitch=GossipingPropertyFileSnitch
     ports:
       - "9045:9042"
+      - "19045:19042"
+    expose:
+      - "19042"
     networks:
       scylla-dc:
         ipv4_address: 10.9.8.5
@@ -29,6 +32,7 @@ services:
     container_name: scylla-dc2-n2
     ports:
       - "9046:9042"
+      - "19046:19042"
     networks:
       scylla-dc:
         ipv4_address: 10.9.8.6
@@ -40,6 +44,7 @@ services:
     container_name: scylla-dc2-n3
     ports:
       - "9047:9042"
+      - "19047:19042"
     networks:
       scylla-dc:
         ipv4_address: 10.9.8.7

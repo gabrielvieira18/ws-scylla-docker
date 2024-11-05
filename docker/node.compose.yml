@@ -9,7 +9,10 @@ services:
       - --developer-mode=1
       - --seeds=scylla-1
     ports:
-      - 9042:9042
+      - "9042:9042"
+      - "19042:19042"
+    expose:
+      - "19042"
     networks:
       scylla-dc:
         ipv4_address: 10.9.8.2
