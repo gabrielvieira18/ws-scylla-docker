@@ -7,7 +7,7 @@ services:
       - --memory=2GB
       - --overprovisioned=1
       - --developer-mode=1
-      - --seeds=scylla-dc1-n1,scylla-dc2-n1
+      - --seeds=scylla-dc1-n1,scylla-dc2-n1,scylla-dc3-n1
       - --endpoint-snitch=GossipingPropertyFileSnitch
     ports:
       - "9042:9042"

@@ -1,4 +1,4 @@
-override COMPOSE_DC_NODE_FLAGS = --file docker/network.compose.yml --file docker/dc1.compose.yml --file docker/dc2.compose.yml
+override COMPOSE_DC_NODE_FLAGS = --file docker/network.compose.yml --file docker/dc1.compose.yml --file docker/dc2.compose.yml --file docker/dc3.compose.yml
 
 DC_NODE ?= scylla-dc1-n1
 
