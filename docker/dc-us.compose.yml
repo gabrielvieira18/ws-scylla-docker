@@ -1,24 +1,24 @@
 services:
-  scylla-dc1-n1: &scylla-main
+  scylla-us-n1: &scylla-main
     image: scylladb/scylla:6.2
-    container_name: scylla-dc1-n1
+    container_name: scylla-us-n1
     command:
       - --smp=2
       - --memory=2GB
       - --overprovisioned=1
       - --developer-mode=1
-      - --seeds=scylla-dc1-n1,scylla-dc2-n1,scylla-dc3-n1
+      - --seeds=scylla-sa-n1,scylla-eu-n1,scylla-us-n1
       - --endpoint-snitch=GossipingPropertyFileSnitch
     ports:
-      - "9042:9042"
-      - "19042:19042"
+      - "9048:9042"
+      - "19048:19042"
     expose:
       - "19042"
     networks:
       scylla-dc:
-        ipv4_address: 10.9.8.2
+        ipv4_address: 10.9.8.8
     volumes:
-      - ./rack.d/dc1.properties:/etc/scylla/cassandra-rackdc.properties:rw
+      - ./rack.d/us.properties:/etc/scylla/cassandra-rackdc.properties:rw
     healthcheck:
       test:
         - CMD-SHELL
@@ -27,27 +27,27 @@ services:
       timeout: 30s
       retries: 15
       start_period: 30s
-  scylla-dc1-n2:
+  scylla-us-n2:
     <<: *scylla-main
-    container_name: scylla-dc1-n2
+    container_name: scylla-us-n2
     ports:
-      - "9043:9042"
-      - "19043:19042"
+      - "9049:9042"
+      - "19049:19042"
     networks:
       scylla-dc:
-        ipv4_address: 10.9.8.3
+        ipv4_address: 10.9.8.9
     depends_on:
-      scylla-dc1-n1:
+      scylla-us-n1:
         condition: service_healthy
-  scylla-dc1-n3:
+  scylla-us-n3:
     <<: *scylla-main
-    container_name: scylla-dc1-n3
+    container_name: scylla-us-n3
     ports:
-      - "9044:9042"
-      - "19044:19042"
+      - "9050:9042"
+      - "19050:19042"
     networks:
       scylla-dc:
-        ipv4_address: 10.9.8.4
+        ipv4_address: 10.9.8.10
     depends_on:
-      scylla-dc1-n1:
+      scylla-us-n1:
         condition: service_healthy

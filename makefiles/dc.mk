@@ -1,6 +1,6 @@
-override COMPOSE_DC_NODE_FLAGS = --file docker/network.compose.yml --file docker/dc1.compose.yml --file docker/dc2.compose.yml --file docker/dc3.compose.yml
+override COMPOSE_DC_NODE_FLAGS = --file docker/network.compose.yml --file docker/dc-sa.compose.yml --file docker/dc-eu.compose.yml --file docker/dc-us.compose.yml
 
-DC_NODE ?= scylla-dc1-n1
+DC_NODE ?= scylla-sa-n1
 
 .PHONY: dc-up
 dc-up: ## Bring up the multi-datacenter setup in detached mode
